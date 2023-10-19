@@ -9,12 +9,14 @@ USE record_company;
 
 4) CREATE A TABLE...
 CREATE TABLE test(
-    test_column INT
+    id NOT NULL AUTO_INCREMENT,
+    test_column INT,
+    PRIMARY KEY (id)
 );
 
 5) ALTER OR ADD COLS TO THE EXISITING TABLE...
 ALTER TABLE test
-ADD another_col VARCHAR(255);
+ADD another_col VARCHAR(255) NOT NULL;
 
 6) REMOVING THE TABLE...
 DROP TABLE test;
@@ -22,3 +24,65 @@ DROP TABLE test;
 7) REMOVING THE COL...
 ALTER TABLE test
 DROP another_col;
+
+8) INSERTING SINGLE VALUE INTO THE TABLE...
+INSERT INTO test(col_name)
+VALUES ('iron_maiden');
+
+9) INSERTING MULTIPLE VALUES INTO THE TABLE...
+INSERT INTO test(col_name)
+VALUES ('deuce'), ('avenged sevenfold'), ('ancor');
+
+10) selecting all cols form tables...
+SELECT * FROM test;
+
+11) selecting all cols from table but limiting to two rows...
+SELECT * from test LIMIT 2;
+
+12) selecting particular cols from table...
+SELECT col_name, col2_name FROM test;
+
+12A) to get only distinct values from cols...
+SELECT DISTINCT col_name FROM test;
+
+13) if we want to rename the cols AND SELECT THEM...
+SELET col_name AS 'colName', col2_name AS 'col2Name; from test;
+
+14) if we want to sort the cols in ascending or descending order...
+SELECT * FROM test ORDER BY col_name ASC;
+SELECT * FROM test ORDER BY col_name DESC;
+
+15) IF WE WANT TO UPDATE THE VALUE OF ANY VALUES...
+UPDATE table name
+SET colName = values
+WHERE id = 1;
+
+15A) SIMILARLY WHERE CLAUSE CAN BE USED FOR FILTERING...
+SELECT * FROM table name
+WHERE col_name condition;
+WHERE col_name LIKE %SOME LETTERS%
+WHERE col_name LIKE %SOME LETTERS% OR id = 2;
+WHERE col_name = condition AND col_name  = condition;
+WHERE col_name BETWEEN condition AND condition;
+
+16) DELETING ROWS INSTEAD OF THE ENTIRE TABLE...
+DELETE FROM table name 
+WHERE id = 2;
+
+17) BASIC JOIN COMMAND...(inner join - return all items where both values on left and right are matched)
+SELECT * FROM TABLE1
+JOIN TABLE2 ON TABLE1.COLNAME = TABLE2.COL2NAME;
+
+18) left JOIN COMMAND...(left join - return all items all items on left table irrespective of the values matching)
+SELECT * FROM TABLE1
+left JOIN TABLE2 ON TABLE1.COLNAME = TABLE2.COL2NAME;
+
+19) RIGHT JOIN COMMAND...(RIGHT join - return all items all items on RIGHT table irrespective of the values matching)
+SELECT * FROM TABLE2
+RIGHT JOIN TABLE2 ON TABLE2.COLNAME = TABLE1.COL2NAME;
+
+20) AGGREGATES AND SUM...
+SELECT AVG(COL NAME) FROM TABLE NAME;
+SELECT SUM(COL NAME) FROM TABLE NAME;
+
+21) 
